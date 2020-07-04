@@ -8,9 +8,9 @@ symlink: move
 
 move: compile
 	mkdir -p /usr/include/libcian
-	cp *.h /usr/include/libcian
+	cp include/libcian/*.h /usr/include/libcian
 	mv libcian.so.1.0 /usr/lib
 
 compile:
-	gcc -Wall -Werror -fPIC -c c_str.c
+	gcc -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
 	gcc -shared -o libcian.so.1.0 *.o
