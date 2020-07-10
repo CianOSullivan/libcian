@@ -23,4 +23,10 @@ To use libcian, use the following template when compiling projects using gcc:
 gcc -o progName progName.c -I/usr/include/libcian -L/usr/lib -lcian
 ```
 
+To generate documentation for libcian (requires doxygen):  
+
+```
+make docs
+```
+
 Feel free to contribute or suggest any useful changes!

@@ -6,7 +6,7 @@ int c_str_len(char *pointer) {
     while( *(pointer + c) != '\0' ){
         c++;
     }
-    
+
     return c;
 }
 
@@ -20,7 +20,7 @@ int c_str_len(char *pointer) {
 void c_reverse(char *str) {
     char *start = str;
     char *end = str + c_str_len(str) - 1;
- 
+
     // skip null
     if (str == 0)
     {
@@ -35,9 +35,8 @@ void c_reverse(char *str) {
 
     // Until end of string reached
     while (start < end) {
-        char tmp = *start; //
-        *start++ = *end;    //
-        *end-- = tmp;    // 
+        char tmp = *start; // store str[start]
+        *start++ = *end;   // set str[start] = str[end]
+        *end-- = tmp;      // set str[end] = str[start - 1]
     }
 }
-

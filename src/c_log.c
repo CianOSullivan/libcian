@@ -1,29 +1,28 @@
 #include "libcian/c_log.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdio.h>  // printf()
+#include <time.h>   // time_t, time(), strftime()
 
+// Define logging levels
 #define OFF 0
 #define INFO 1
 #define DEBUG 2
-int log_level;
+int log_level = OFF;    // The current logging level
 
 void c_set_logger(int level) {
     if (level == 1) {
         log_level = INFO;
         printf("INFO logging set.\n");
-
     } else if (level == 2) {
         log_level = DEBUG;
         printf("DEBUG logging set.\n");
-
-    } else {
-        log_level = OFF;
+    } else
         printf("No logging set.\n");
-
-    }
 }
 
+/**
+Print the current time in the format:
+Day Month Year Hour:Minute:second:
+ */
 void print_time() {
     char time_str[500];
     time_t now = time(NULL);

@@ -14,3 +14,10 @@ move: compile
 compile:
 	gcc -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
 	gcc -shared -o libcian.so.1.0 *.o
+
+clean_docs:
+	rm -fr docs/html
+	rm -fr docs/latex
+
+docs: clean_docs
+	doxygen docs/Doxyfile
