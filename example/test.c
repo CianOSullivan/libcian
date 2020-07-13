@@ -23,5 +23,12 @@ int main() {
     c_ll_add(list, 2);
     c_ll_print(list);
 
+    c_ll_remove_last(list);
+    c_ll_remove_last(list);
+    c_ll_remove_last(list);
+    c_ll_remove_last(list);
+    c_ll_add(list, 5);
+    c_ll_print(list);
+
     return 0;
 }

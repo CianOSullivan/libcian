@@ -9,12 +9,12 @@ typedef struct node {
     struct node * next;
 } node;
 
-node* head;          // Pointer to head of linked list
+node* head;
 int count;       // Keeps track of number of items in list
 
 node* c_ll_init();
 void c_ll_print(node* list);
 void c_ll_add(node* list, int data);
-void c_ll_remove();
+void c_ll_remove_last(node* list);
 
 #endif
