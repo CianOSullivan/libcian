@@ -1,3 +1,4 @@
 *.o
 docs/html
 docs/latex
+example/testProgram
