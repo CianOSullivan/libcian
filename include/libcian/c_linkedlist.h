@@ -9,12 +9,19 @@ typedef struct node {
     struct node * next;
 } node;
 
-node* head;
-int count;       // Keeps track of number of items in list
+typedef struct c_ll {
+    struct node* head;
+    int count;
+} c_ll;
 
-node* c_ll_init();
-void c_ll_print(node* list);
-void c_ll_add(node* list, int data);
-void c_ll_remove_last(node* list);
+c_ll* list;
+//int count;       // Keeps track of number of items in list
+
+c_ll* c_ll_init();
+void c_ll_print(c_ll* list);
+void c_ll_add(c_ll* list, int data);
+void c_ll_remove_front(c_ll* list);
+void c_ll_remove_end(c_ll* list);
+int c_ll_size(c_ll* list);
 
 #endif

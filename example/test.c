@@ -15,18 +15,16 @@ int main() {
     printf("Reversed Word: %s\n", test);
     c_log_info("Reversed word");
 
-    node* list = c_ll_init();
+    c_ll* list = c_ll_init();
     c_log_info("Made linked list");
 
-    c_ll_add(list, 3);
-    c_log_info("Added first item");
-    c_ll_add(list, 2);
+    for (int i = 0; i < 20; i++) {
+        c_ll_add(list, i);
+    }
+
     c_ll_print(list);
 
-    c_ll_remove_last(list);
-    c_ll_remove_last(list);
-    c_ll_remove_last(list);
-    c_ll_remove_last(list);
+    c_ll_remove_end(list);
     c_ll_add(list, 5);
     c_ll_print(list);
 
