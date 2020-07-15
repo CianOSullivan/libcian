@@ -44,6 +44,9 @@ void c_ll_remove_end(c_ll* list);
 Remove data at the given index.
  */
 void c_ll_remove_at(c_ll* list, int index);
+
+node* c_ll_get(c_ll* list, int index);
+
 int c_ll_size(c_ll* list);
 
 #endif

@@ -24,12 +24,22 @@ void c_ll_add(c_ll* list, int data) {
     list->count += 1;
 }
 
+void c_ll_add_start(c_ll* list, int data) {
+    node* current = list->head;
+
+    node* newNode = (node*) malloc(sizeof(node));
+    newNode->data = data;
+    newNode->next = current->next;
+    current->next = newNode;
+    list->count += 1;
+}
+
 
 void c_ll_remove_front(c_ll* list) {
     node* current = list->head->next; // Skip first node
 
     if (list->count == 0) {
-        fprintf(stderr, "Can't remove element from empty list.");
+        fprintf(stderr, "Can't remove element from empty list.\n");
         return;
     }
 
@@ -40,7 +50,7 @@ void c_ll_remove_front(c_ll* list) {
 
 void c_ll_remove_end(c_ll* list) {
     if (list->count == 0) {
-        fprintf(stderr, "Can't remove element from empty list.");
+        fprintf(stderr, "Can't remove element from empty list.\n");
         return;
     }
 
@@ -52,6 +62,20 @@ void c_ll_remove_end(c_ll* list) {
     free(current->next);
     current->next = NULL;
     list->count -= 1;
+}
+
+node* c_ll_get(c_ll* list, int index) {
+    node* current = list->head->next; // Skip head node
+
+    for (int i = 0; i < index; i++) {
+        if (current->next == NULL) {
+            fprintf(stderr, "IndexError: Can't remove element at index from linked list.\n");
+            return NULL;
+        }
+        current = current->next;
+    }
+
+    return current;
 }
 
 void c_ll_remove_at(c_ll* list, int index) {
@@ -67,7 +91,7 @@ void c_ll_remove_at(c_ll* list, int index) {
 
     for (int i = 0; i < index-1; i++) {
         if (current->next == NULL) {
-            fprintf(stderr, "IndexError: Can't remove element at index from linked list.");
+            fprintf(stderr, "IndexError: Can't remove element at index from linked list.\n");
             return;
         }
         current = current->next;
@@ -77,7 +101,6 @@ void c_ll_remove_at(c_ll* list, int index) {
     current->next = temp->next;
     free(temp);
     list->count -= 1;
-
 }
 
 void c_ll_print(c_ll* list) {

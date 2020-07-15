@@ -29,7 +29,13 @@ int main() {
     c_ll_remove_front(list);
     c_ll_remove_at(list, 0);
     c_ll_print(list);
-    printf("Size: %d", c_ll_size(list));
+    printf("Size: %d\n", c_ll_size(list));
+    c_ll_add_start(list, 3);
+    c_ll_print(list);
+
+    node* no = c_ll_get(list, 6);
+    if (no != NULL)
+        printf("Val: %d", no->data);
 
     return 0;
 }
