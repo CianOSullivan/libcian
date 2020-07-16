@@ -24,7 +24,7 @@ move: compile
 
 # Compile the libcian source files and link them
 compile:
-	gcc -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
+	gcc -g -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
 	gcc -shared -o libcian.so.1.0 *.o
 
 # Remove the generated .o files
