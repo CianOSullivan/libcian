@@ -7,8 +7,13 @@ c_ll* c_ll_init() {
 
     // Make the head node (head node is treated as the pointer to the list)
     list->head = (node*) malloc(sizeof(node));
+
+
     list->head->data = -1;
     list->head->next = NULL;
+
+    list->currentPos = 0;
+    list->currentNode = (node*) malloc(sizeof(node));
 
     return list;
 }
@@ -133,4 +138,24 @@ void c_ll_print(c_ll* list) {
 
 int c_ll_size(c_ll* list) {
     return list->count;
+}
+
+void c_ll_first(c_ll* list) {
+    // Reset the position to the head node
+    list->currentPos = 0;
+    list->currentNode = list->head;
+}
+
+node* c_ll_next(c_ll* list) {
+    // Exit if the next node is out of index
+    if (list->currentPos > list->count) {
+        fprintf(stderr, "Reached end of list.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Set the current node to the next node
+    list->currentPos += 1;
+    list->currentNode = list->currentNode->next;
+
+    return list->currentNode; // Return the next node in the list
 }

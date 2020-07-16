@@ -18,6 +18,8 @@ the list.
 typedef struct c_ll {
     struct node* head;
     int count;
+    struct node* currentNode;
+    int currentPos;
 } c_ll;
 
 /**
@@ -93,12 +95,17 @@ int c_ll_size(c_ll* list);
 
 /**
 Reset the current position of the list
+
+@param list the list to go to the start of
  */
-void c_ll_first();
+void c_ll_first(c_ll* list);
 
 /**
-Get the next node in the list.
+Get the next node in the linked list.
+
+@returns the next node in the list
+@param list the list to get the next node from
  */
-node* c_ll_next();
+node* c_ll_next(c_ll* list);
 
 #endif

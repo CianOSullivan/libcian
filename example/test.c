@@ -31,9 +31,14 @@ int main() {
     c_ll_print(list);
     printf("Size: %d\n", c_ll_size(list));
     c_ll_add_start(list, 3);
-    c_ll_print(list);
+
+    c_ll_first(list);
+    for (int i = 0; i < c_ll_size(list); i++) {
+        printf("Node %d: %d\n", i, c_ll_next(list)->data);
+    }
 
     node* no = c_ll_get(list, 6);
+
     if (no != NULL)
         printf("Val: %d", no->data);
 
