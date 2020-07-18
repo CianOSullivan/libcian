@@ -5,16 +5,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-void find_str(char const* str, char const* substr)
-{
-    const char* pos = c_strstr(str, substr);
-    if(pos) {
-        printf("found the string '%s' in '%s' at position: %ld\n", substr, str, pos - str);
-    } else {
-        printf("the string '%s' was not found in '%s'\n", substr, str);
-    }
-}
-
 int main() {
     c_set_logger(1);    // Set logging level to INFO
     char test[] = "Hello World!";
@@ -54,14 +44,11 @@ int main() {
         printf("Val: %d", no->data);
 
     char string1[] = "This is cool!";
-    if (contains(string1, "is")) {
+    if (contains(string1, "cool!")) {
         printf("True\n");
     } else {
         printf("False\n");
     }
-
-    char* str = "one two three";
-    find_str(str, "two");
 
 
     return 0;

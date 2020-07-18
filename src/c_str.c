@@ -12,26 +12,17 @@ int c_str_len(char *pointer) {
     return c;
 }
 
-/**
- * Reverse the given character array in place.
- *
- * Note: Character pointers are immutable, don't give me one.
- *
- * @param str the character array to reverse
- */
 void c_reverse(char *str) {
     char *start = str;
     char *end = str + c_str_len(str) - 1;
 
-    // skip null
-    if (str == 0)
-    {
+    // Skip empty string
+    if (str == 0) {
         return;
     }
 
-    // skip empty string
-    if (*str == 0)
-    {
+    // Skip empty string
+    if (*str == 0) {
         return;
     }
 
@@ -43,36 +34,31 @@ void c_reverse(char *str) {
     }
 }
 
-/** Returns <0 if s1<s2, 0 if s1==s2, >0 if s1>s2 */
 int c_strcmp(const char* s1, const char* s2) {
-    // Iterate through
+    // Iterate through s1 and s2 until \0
     while (*s1 && *s2) {
 		if (*s1++ != *s2++)
 			return 0;
-
-		//s1++;
-		//s2++;
 	}
 
 	return (*s2 == '\0');
 }
 
-const char* c_strstr(const char* X, const char* Y) {
-	while (*X != '\0')
-	{
-		if ((*X == *Y) && (c_strcmp(X, Y)))
-			return X;
-		X++;
+const char* c_strstr(const char* s1, const char* s2) {
+    // Iterate through s1 until end of string
+	while (*s1 != '\0') {
+		if ((*s1 == *s2) && (c_strcmp(s1, s2)))
+			return s1;
+		s1++; // Progress through s1
 	}
 
-	return NULL;
+	return NULL; // No match found
 }
 
-bool contains(char s1[], char s2[]) {
+bool contains(const char s1[], const char s2[]) {
+    // Check if s2 is in s1
     if (c_strstr(s1, s2) != NULL) {
         return true;
     }
     return false;
-
-
 }
