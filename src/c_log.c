@@ -1,11 +1,7 @@
-#include "libcian/c_log.h"
+#include "c_log.h"
 #include <stdio.h>  // printf()
 #include <time.h>   // time_t, time(), strftime()
 
-// Define logging levels
-#define OFF 0
-#define INFO 1
-#define DEBUG 2
 int log_level = OFF;    // The current logging level
 
 void c_set_logger(int level) {

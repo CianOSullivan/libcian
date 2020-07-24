@@ -1,5 +1,17 @@
 #ifndef C_LOG_H
 #define C_LOG_H
+/**
+   @file c_log.h
+   @brief Logging framework.
+
+   Logging framework used by libcian in order to enable multiple logging
+   levels depending on requirement.
+*/
+
+// Define logging levels
+#define OFF 0
+#define INFO 1
+#define DEBUG 2
 
 /**
 Set the level of the debugger
@@ -25,4 +37,5 @@ Print message if INFO level set.
  */
 void c_log_info(const char* message);
 
+extern int log_level; // The currently set logging level
 #endif

@@ -1,6 +1,12 @@
 #ifndef C_STR_H
 #define C_STR_H
 #include <stdbool.h>  // true, false
+/**
+   @file c_str.h
+   @brief String methods.
+
+   Common string operations and some standard library replacement functions.
+*/
 
 /**
 Determine length of character pointer.

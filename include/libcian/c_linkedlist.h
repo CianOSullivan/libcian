@@ -2,6 +2,13 @@
 #define C_LINKEDLIST_H
 #include <stdlib.h>   // malloc(), NULL
 #include <stdio.h>    // fprintf(), printf()
+/**
+   @file c_linkedlist.h
+   @brief Linked list data structure.
+
+   Singly linked list implementation. Only simple methods implemented to allow
+   basic usage of a linked list.
+*/
 
 /**
 A single item in the list containing the data and a pointer to the next node.

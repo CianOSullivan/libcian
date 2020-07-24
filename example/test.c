@@ -1,7 +1,7 @@
-#include <c_str.h>
-#include <c_log.h>
-#include <c_linkedlist.h>
-#include <c_ut.h>
+#include <libcian/c_str.h>
+#include <libcian/c_log.h>
+#include <libcian/c_linkedlist.h>
+#include <libcian/c_ut.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -9,68 +9,70 @@
 int tests_run = 0;
 
 char* test_string() {
-    char test[] = "Hello World!";
+    char hello[] = "Hello World!";
 
-    int count = c_str_len(test);
+    // String length
+    int count = c_str_len(hello);
     C_ASSERT("String length != 12", count == 12);
 
-    c_reverse(test);
+    // String reversal
+    c_reverse(hello);
     c_log_info("Reversed word");
-    C_ASSERT("Reversed string incorrect", strcmp(test, "!dlroW olleH") == 0);
+    C_ASSERT("Reversed string incorrect", strcmp(hello, "!dlroW olleH") == 0);
+
+    // String contains
+    char cool[] = "This is cool!";
+    C_ASSERT("Contains method incorrect", contains(cool, "cool!"));
+
+    return 0;
+}
+
+char* test_linkedlist(void) {
+    c_ll* list = c_ll_init(); // Initialise list
+
+    // Add initial items to list
+    for (int i = 0; i < 10; i++) {
+        c_ll_add(list, i);
+    }
+
+    // Add / Remove method test
+    c_ll_add_start(list, 3);
+    c_ll_remove_front(list);
+    c_ll_remove_end(list);
+    c_ll_remove_at(list, 0);
+    c_ll_print(list);
+
+    // LinkedList size method
+    C_ASSERT("LinkedList size incorrect", c_ll_size(list) == 8);
+
+    // LinkedList iterator example
+    c_ll_first(list); // Set the first list item
+    for (int i = 0; i < c_ll_size(list); i++)
+        printf("Node %d: %d\n", i, c_ll_next(list)->data);
+
+    // LinkedList get method
+    C_ASSERT("LinkedList get method incorrect", c_ll_get(list, 6)->data == 7);
 
     return 0;
 }
 
 char* test_suite(void) {
     C_RUN_TEST(test_string);
+    C_RUN_TEST(test_linkedlist);
 
     return 0;
 }
 
 int main() {
+    printf("*** STARTING UNIT TESTS ***\n");
     c_set_logger(1);    // Set logging level to INFO
 
     char* result = test_suite();
+    printf("Test sets run: %d\n", tests_run);
     if (result != 0)
         printf("ERROR: %s\n", result);
     else
-        printf("ALL TESTS PASSED\n");
-
-    printf("Tests run: %d\n", tests_run);
-
-    c_ll* list = c_ll_init();
-
-    for (int i = 0; i < 10; i++) {
-        c_ll_add(list, i);
-    }
-
-    c_ll_print(list);
-    c_ll_remove_end(list);
-    c_ll_add(list, 5);
-    c_ll_print(list);
-
-    c_ll_remove_front(list);
-    c_ll_remove_at(list, 0);
-    c_ll_print(list);
-    printf("Size: %d\n", c_ll_size(list));
-    c_ll_add_start(list, 3);
-
-    c_ll_first(list);
-    for (int i = 0; i < c_ll_size(list); i++) {
-        printf("Node %d: %d\n", i, c_ll_next(list)->data);
-    }
-
-    node* no = c_ll_get(list, 6);
-
-    if (no != NULL)
-        printf("Val: %d", no->data);
-
-    char string1[] = "This is cool!";
-    if (contains(string1, "cool!")) {
-        printf("True\n");
-    } else {
-        printf("False\n");
-    }
+        printf("*** ALL TESTS PASSED ***\n");
 
 
     return 0;
