@@ -1,20 +1,42 @@
 #include <c_str.h>
 #include <c_log.h>
 #include <c_linkedlist.h>
+#include <c_ut.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 
-int main() {
-    c_set_logger(1);    // Set logging level to INFO
+int tests_run = 0;
+
+char* test_string() {
     char test[] = "Hello World!";
 
     int count = c_str_len(test);
-    printf("Count: %d\n", count);
+    C_ASSERT("String length != 12", count == 12);
 
     c_reverse(test);
-    printf("Reversed Word: %s\n", test);
     c_log_info("Reversed word");
+    C_ASSERT("Reversed string incorrect", strcmp(test, "!dlroW olleH") == 0);
+
+    return 0;
+}
+
+char* test_suite(void) {
+    C_RUN_TEST(test_string);
+
+    return 0;
+}
+
+int main() {
+    c_set_logger(1);    // Set logging level to INFO
+
+    char* result = test_suite();
+    if (result != 0)
+        printf("ERROR: %s\n", result);
+    else
+        printf("ALL TESTS PASSED\n");
+
+    printf("Tests run: %d\n", tests_run);
 
     c_ll* list = c_ll_init();
 
