@@ -2,6 +2,7 @@
 #include <libcian/c_log.h>
 #include <libcian/c_linkedlist.h>
 #include <libcian/c_ut.h>
+#include <libcian/c_bintree.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -66,6 +67,15 @@ char* test_suite(void) {
 }
 
 int main() {
+    c_bt* tree = c_bt_init();
+    c_bt_insert(tree, 5);
+    c_bt_insert(tree, 8);
+    c_bt_insert(tree, 10);
+    c_bt_insert(tree, 2);
+    print_preorder(tree->root);
+
+
+
     printf("*** STARTING UNIT TESTS ***\n");
     c_set_logger(1);    // Set logging level to INFO
 

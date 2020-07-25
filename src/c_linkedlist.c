@@ -1,4 +1,4 @@
-#include "c_linkedlist.h"
+#include "libcian/c_linkedlist.h"
 
 c_ll* c_ll_init() {
     // Initialise a new list and set number of items to 0
@@ -6,20 +6,20 @@ c_ll* c_ll_init() {
     list->count = 0;
 
     // Make the head node (head node is treated as the pointer to the list)
-    list->head = (node*) malloc(sizeof(node));
+    list->head = (c_ll_node*) malloc(sizeof(c_ll_node));
 
 
     list->head->data = -1;
     list->head->next = NULL;
 
     list->currentPos = 0;
-    list->currentNode = (node*) malloc(sizeof(node));
+    list->currentNode = (c_ll_node*) malloc(sizeof(c_ll_node));
 
     return list;
 }
 
 void c_ll_add(c_ll* list, int data) {
-    node* current = list->head;
+    c_ll_node* current = list->head;
 
     // Move to the end of the list
     while (current->next != NULL) {
@@ -27,7 +27,7 @@ void c_ll_add(c_ll* list, int data) {
     }
 
     // Add a new node with the given data to the list
-    current->next = (node*) malloc(sizeof(node));
+    current->next = (c_ll_node*) malloc(sizeof(c_ll_node));
     current->next->data = data;
     current->next->next = NULL;
 
@@ -35,10 +35,10 @@ void c_ll_add(c_ll* list, int data) {
 }
 
 void c_ll_add_start(c_ll* list, int data) {
-    node* current = list->head;
+    c_ll_node* current = list->head;
 
     // Make the new node and rejig the pointers
-    node* newNode = (node*) malloc(sizeof(node));
+    c_ll_node* newNode = (c_ll_node*) malloc(sizeof(c_ll_node));
     newNode->data = data;
     newNode->next = current->next;
     current->next = newNode;
@@ -53,7 +53,7 @@ void c_ll_remove_front(c_ll* list) {
         fprintf(stderr, "Can't remove element from empty list.\n");
         return;
     }
-    node* current = list->head->next; // Always skip head node
+    c_ll_node* current = list->head->next; // Always skip head node
 
     //Rejig pointers and free floating pointer
     list->head->next = current->next;
@@ -70,7 +70,7 @@ void c_ll_remove_end(c_ll* list) {
     }
 
     // Skip to second last element in list
-    node* current = list->head;
+    c_ll_node* current = list->head;
     while (current->next->next != NULL) {
         current = current->next;
     }
@@ -82,8 +82,8 @@ void c_ll_remove_end(c_ll* list) {
     list->count -= 1;
 }
 
-node* c_ll_get(c_ll* list, int index) {
-    node* current = list->head->next; // Skip head node
+c_ll_node* c_ll_get(c_ll* list, int index) {
+    c_ll_node* current = list->head->next; // Skip head node
 
     // Iterate through list until index
     for (int i = 0; i < index; i++) {
@@ -98,7 +98,7 @@ node* c_ll_get(c_ll* list, int index) {
 }
 
 void c_ll_remove_at(c_ll* list, int index) {
-    node* current = list->head->next; // Skip head node
+    c_ll_node* current = list->head->next; // Skip head node
 
     // Run specific remove methods if applicable
     if (index == 0) {
@@ -119,7 +119,7 @@ void c_ll_remove_at(c_ll* list, int index) {
     }
 
     // Remove node and rejig pointers
-    node* temp = current->next;
+    c_ll_node* temp = current->next;
     current->next = temp->next;
     free(temp);
 
@@ -127,7 +127,7 @@ void c_ll_remove_at(c_ll* list, int index) {
 }
 
 void c_ll_print(c_ll* list) {
-    node* current = list->head->next;    // Always skip head node
+    c_ll_node* current = list->head->next;    // Always skip head node
 
     // Iterate through list and print the data
     while (current != NULL) {
@@ -146,7 +146,7 @@ void c_ll_first(c_ll* list) {
     list->currentNode = list->head;
 }
 
-node* c_ll_next(c_ll* list) {
+c_ll_node* c_ll_next(c_ll* list) {
     // Exit if the next node is out of index
     if (list->currentPos > list->count) {
         fprintf(stderr, "Reached end of list.\n");
