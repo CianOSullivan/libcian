@@ -9,6 +9,7 @@
 int tests_run = 0;
 
 char* test_string() {
+    printf("\n*** Testing string ***\n");
     char hello[] = "Hello World!";
 
     // String length
@@ -28,6 +29,7 @@ char* test_string() {
 }
 
 char* test_linkedlist(void) {
+    printf("\n*** Testing LinkedList ***\n");
     c_ll* list = c_ll_init(); // Initialise list
 
     // Add initial items to list
@@ -47,7 +49,7 @@ char* test_linkedlist(void) {
 
     // LinkedList iterator example
     c_ll_first(list); // Set the first list item
-    for (int i = 0; i < c_ll_size(list); i++)
+    for (int i = 0; !c_ll_done(list); i++)
         printf("Node %d: %d\n", i, c_ll_next(list)->data);
 
     // LinkedList get method
@@ -68,12 +70,12 @@ int main() {
     c_set_logger(1);    // Set logging level to INFO
 
     char* result = test_suite();
-    printf("Test sets run: %d\n", tests_run);
+
     if (result != 0)
         printf("ERROR: %s\n", result);
     else
         printf("*** ALL TESTS PASSED ***\n");
-
+    printf("*** %d TEST SETS RUN ***\n", tests_run);
 
     return 0;
 }

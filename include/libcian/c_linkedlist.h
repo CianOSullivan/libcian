@@ -2,6 +2,7 @@
 #define C_LINKEDLIST_H
 #include <stdlib.h>   // malloc(), NULL
 #include <stdio.h>    // fprintf(), printf()
+#include <stdbool.h>  // true, false
 /**
    @file c_linkedlist.h
    @brief Linked list data structure.
@@ -114,5 +115,7 @@ Get the next node in the linked list.
 @param list the list to get the next node from
  */
 node* c_ll_next(c_ll* list);
+
+bool c_ll_done(c_ll* list);
 
 #endif

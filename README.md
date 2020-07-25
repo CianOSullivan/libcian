@@ -23,6 +23,8 @@ To use libcian, use the following template when compiling projects using gcc:
 gcc -o progName progName.c -I/usr/include/libcian -L/usr/lib -lcian
 ```
 
+Example usage of libcian can be found under [example](example/). This directory demonstrates usage of libcian through a series of unit tests which verify the usage of the library.
+
 To generate documentation for libcian (requires doxygen):  
 
 ```

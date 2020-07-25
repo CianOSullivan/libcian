@@ -159,3 +159,9 @@ node* c_ll_next(c_ll* list) {
 
     return list->currentNode; // Return the next node in the list
 }
+
+bool c_ll_done(c_ll* list) {
+    if (list->currentPos >= list->count)
+        return true;
+    return false;
+}
