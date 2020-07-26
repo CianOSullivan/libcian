@@ -17,11 +17,9 @@ c_bt* c_bt_init() {
 void c_bt_insert(c_bt* tree, int data) {
     c_bt_node* current = tree->root;
     if (tree->count == 0) {
-        printf("Inserting root");
         tree->root->data = data;
         tree->count += 1;
     } else {
-
         while (1) {
             if (data > current->data) {
                 //right
@@ -44,18 +42,30 @@ void c_bt_insert(c_bt* tree, int data) {
             }
         }
         tree->count += 1;
-        printf("Adding second");
     }
 }
 
 void print_preorder(c_bt_node * tree) {
-    if (tree)
-    {
-        printf("Data: %d\n", tree->data);
-        if (tree->left != NULL)
-            print_preorder(tree->left);
-        else if (tree->right != NULL)
-            print_preorder(tree->right);
+    if (tree) {
+        printf("%d\n",tree->data);
+        print_preorder(tree->left);
+        print_preorder(tree->right);
+    }
+}
+
+void print_inorder(c_bt_node * tree) {
+    if (tree) {
+        print_inorder(tree->left);
+        printf("%d\n",tree->data);
+        print_inorder(tree->right);
+    }
+}
+
+void print_postorder(c_bt_node * tree) {
+    if (tree) {
+        print_postorder(tree->left);
+        print_postorder(tree->right);
+        printf("%d\n",tree->data);
     }
 }
 

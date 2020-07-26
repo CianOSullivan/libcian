@@ -37,7 +37,14 @@ c_bt* c_bt_init();
 
 void c_bt_insert(c_bt* tree, int data);
 
+/**
+   Tree print method in the preorder format.
+
+   @param tree the root node of the tree
+ */
 void print_preorder(c_bt_node * tree);
+void print_inorder(c_bt_node * tree);
+void print_postorder(c_bt_node * tree);
 
 int c_bt_size(c_bt* tree);
 
