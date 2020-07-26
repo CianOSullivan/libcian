@@ -59,23 +59,29 @@ char* test_linkedlist(void) {
     return 0;
 }
 
-char* test_suite(void) {
-    C_RUN_TEST(test_string);
-    C_RUN_TEST(test_linkedlist);
+char* test_binarytree() {
+    printf("\n*** Testing Binary Tree ***\n");
 
-    return 0;
-}
-
-int main() {
     c_bt* tree = c_bt_init();
     c_bt_insert(tree, 5);
     c_bt_insert(tree, 8);
     c_bt_insert(tree, 10);
     c_bt_insert(tree, 2);
+    printf("Size: %d\n", c_bt_size(tree));
     print_preorder(tree->root);
+    //C_ASSERT("NO", 1==1);
+    return 0;
+}
 
+char* test_suite(void) {
+    C_RUN_TEST(test_string);
+    C_RUN_TEST(test_linkedlist);
+    C_RUN_TEST(test_binarytree);
 
+    return 0;
+}
 
+int main() {
     printf("*** STARTING UNIT TESTS ***\n");
     c_set_logger(1);    // Set logging level to INFO
 

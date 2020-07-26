@@ -39,6 +39,7 @@ void c_bt_insert(c_bt* tree, int data);
 
 void print_preorder(c_bt_node * tree);
 
+int c_bt_size(c_bt* tree);
 
 
 #endif
