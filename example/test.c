@@ -3,6 +3,7 @@
 #include <libcian/c_linkedlist.h>
 #include <libcian/c_ut.h>
 #include <libcian/c_bintree.h>
+#include <libcian/c_util.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -19,7 +20,7 @@ char* test_string() {
 
     // String reversal
     c_reverse(hello);
-    c_log_info("Reversed word");
+    c_log_info("Reversed word"); // Example of logging usage
     C_ASSERT("Reversed string incorrect", strcmp(hello, "!dlroW olleH") == 0);
 
     // String contains
@@ -73,10 +74,21 @@ char* test_binarytree() {
     return 0;
 }
 
+char* test_util() {
+    printf("\n*** Testing Utilities ***\n");
+
+    C_ASSERT("Incorrect digit count: -1", c_count_digits(-1) == 1);
+    C_ASSERT("Incorrect digit count: 0", c_count_digits(0) == 1);
+    C_ASSERT("Incorrect digit count: 12345", c_count_digits(12345) == 5);
+
+    return 0;
+}
+
 char* test_suite(void) {
     C_RUN_TEST(test_string);
     C_RUN_TEST(test_linkedlist);
     C_RUN_TEST(test_binarytree);
+    C_RUN_TEST(test_util);
 
     return 0;
 }
