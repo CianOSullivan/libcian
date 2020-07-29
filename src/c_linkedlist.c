@@ -18,6 +18,29 @@ c_ll* c_ll_init() {
     return list;
 }
 
+void c_ll_destroy(c_ll* list) {
+    // Skip if list is empty
+    if (list->count == 0) {
+        fprintf(stderr, "Can't destroy empty list.\n");
+        return;
+    }
+    c_ll_node* current = list->head->next; // Always skip head node
+
+    // Free every node until end of linked list
+    while (current != NULL) {
+        c_ll_node* temp = current->next;
+        free(current);
+        current = temp;
+        list->count -= 1;
+    }
+
+    // Reset to empty linkedlist head
+    list->head->data = -1;
+    list->head->next = NULL;
+    list->currentPos = 0;
+}
+
+
 void c_ll_add(c_ll* list, int data) {
     c_ll_node* current = list->head;
 

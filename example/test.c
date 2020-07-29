@@ -57,6 +57,10 @@ char* test_linkedlist(void) {
     // LinkedList get method
     C_ASSERT("LinkedList get method incorrect", c_ll_get(list, 6)->data == 7);
 
+    // Free the entire linked list
+    c_ll_destroy(list);
+    C_ASSERT("LinkedList destroy method incorrect", c_ll_size(list) == 0);
+
     return 0;
 }
 

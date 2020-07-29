@@ -38,6 +38,16 @@ typedef struct c_ll {
 c_ll* c_ll_init();
 
 /**
+   Destroy the given linked list.
+
+   Resets the list to the default setup.
+
+   @param list the list to destroy
+*/
+void c_ll_destroy(c_ll* list);
+
+
+/**
    Print the contents of the linked list.
 
    @param list the list to print
