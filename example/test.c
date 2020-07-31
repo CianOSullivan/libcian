@@ -4,6 +4,7 @@
 #include <libcian/c_ut.h>
 #include <libcian/c_bintree.h>
 #include <libcian/c_util.h>
+#include <libcian/c_math.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -88,11 +89,22 @@ char* test_util() {
     return 0;
 }
 
+char* test_math() {
+    printf("\n*** Testing Math ***\n");
+
+    C_ASSERT("is_prime method not functioning correctly", is_prime(92831) == true);
+    C_ASSERT("is_prime method not functioning correctly", is_prime(92832) == false);
+
+    return 0;
+}
+
 char* test_suite(void) {
     C_RUN_TEST(test_string);
     C_RUN_TEST(test_linkedlist);
     C_RUN_TEST(test_binarytree);
     C_RUN_TEST(test_util);
+    C_RUN_TEST(test_math);
+
 
     return 0;
 }
@@ -106,7 +118,7 @@ int main() {
     if (result != 0)
         printf("ERROR: %s\n", result);
     else
-        printf("*** ALL TESTS PASSED ***\n");
+        printf("\n*** ALL TESTS PASSED ***\n");
     printf("*** %d TEST SETS RUN ***\n", tests_run);
 
     return 0;
