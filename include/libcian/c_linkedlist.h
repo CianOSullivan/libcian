@@ -121,11 +121,25 @@ void c_ll_first(c_ll* list);
 /**
    Get the next node in the linked list.
 
+   NOTE: Don't forget to use c_ll_first before using this function otherwise
+   this will cause a segmentation fault!
+
+   ANOTHER NOTE: This function increases the current position of the iterator
+   so should not be called more than once when iterating through the list
+   linearly!
+
    @returns the next node in the list
    @param list the list to get the next node from
 */
 c_ll_node* c_ll_next(c_ll* list);
 
+
+/**
+   Get status of list iterator.
+
+   @returns true if end of list reached using c_ll_next
+   @param list the list to check the status of iterator
+ */
 bool c_ll_done(c_ll* list);
 
 #endif
