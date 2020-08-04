@@ -1,4 +1,6 @@
-all: install
+all: install example
+
+.PHONY: example clean_docs cleanup checkroot
 
 # Install the standard library so it can be accessed by gcc
 install: checkroot symlink
@@ -26,6 +28,10 @@ move: compile
 compile:
 	gcc -g -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
 	gcc -shared -o libcian.so.1.0 *.o
+
+example:
+	cd example && $(MAKE)
+	./example/testProgram
 
 # Remove the generated .o files
 cleanup:
