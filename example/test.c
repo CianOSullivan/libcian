@@ -75,7 +75,6 @@ char* test_binarytree() {
     c_bt_insert(tree, 2);
     printf("Size: %d\n", c_bt_size(tree));
     print_preorder(tree->root);
-    //C_ASSERT("NO", 1==1);
     return 0;
 }
 
@@ -85,6 +84,9 @@ char* test_util() {
     C_ASSERT("Incorrect digit count: -1", c_count_digits(-1) == 1);
     C_ASSERT("Incorrect digit count: 0", c_count_digits(0) == 1);
     C_ASSERT("Incorrect digit count: 12345", c_count_digits(12345) == 5);
+    int* arr = c_split_digits(9009, 4);
+    C_ASSERT("Incorrect digit count: 12345", arr[3] == 9);
+    free(arr);
 
     return 0;
 }
@@ -110,7 +112,7 @@ char* test_suite(void) {
 }
 
 int main() {
-    printf("*** STARTING UNIT TESTS ***\n");
+    printf("\n*** STARTING UNIT TESTS ***\n");
     c_set_logger(1);    // Set logging level to INFO
 
     char* result = test_suite();
