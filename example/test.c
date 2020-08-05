@@ -85,8 +85,8 @@ char* test_util() {
     C_ASSERT("Incorrect digit count: 0", c_count_digits(0) == 1);
     C_ASSERT("Incorrect digit count: 12345", c_count_digits(12345) == 5);
     int* arr = c_split_digits(9009, 4);
-    C_ASSERT("Incorrect digit count: 12345", arr[3] == 9);
-    free(arr);
+    C_ASSERT("Digit split not functioning correctly", arr[3] == 9);
+    free(arr); // Never forget to free array!!
 
     return 0;
 }
@@ -96,6 +96,8 @@ char* test_math() {
 
     C_ASSERT("is_prime method not functioning correctly", is_prime(92831) == true);
     C_ASSERT("is_prime method not functioning correctly", is_prime(92832) == false);
+    C_ASSERT("is_palindrome method not functioning correctly", is_palindrome(9009) == true);
+    C_ASSERT("is_even method not functioning correctly", is_even(104) == true);
 
     return 0;
 }
