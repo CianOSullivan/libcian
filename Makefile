@@ -13,21 +13,21 @@ ifneq ($(shell id -u), 0)
 endif
 
 # Add version numbers and link these to .so file
-symlink: move cleanup
+symlink: compile cleanup
 	ln -sf /usr/lib/libcian.so.1.0 /usr/lib/libcian.so.1
 	ln -sf /usr/lib/libcian.so.1.0 /usr/lib/libcian.so
 
 # Move the header files to an include directory and the shared 
 # library to a standard library directory
-move: compile
+move: 
 	mkdir -p /usr/include/libcian
 	cp include/libcian/*.h /usr/include/libcian
-	mv libcian.so.1.0 /usr/lib
 
 # Compile the libcian source files and link them
-compile:
+compile: move
 	gcc -g -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
 	gcc -shared -o libcian.so.1.0 *.o
+	mv libcian.so.1.0 /usr/lib
 
 example:
 	cd example && $(MAKE)
