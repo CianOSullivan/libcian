@@ -1,6 +1,7 @@
 #ifndef C_UTIL_H
 #define C_UTIL_H
-#include <stdlib.h>
+#include <stdio.h> // frprintf, FILE...
+#include <stdlib.h> // exit, malloc...
 /**
    @file c_util.h
    @brief Libcian utilities.
@@ -21,10 +22,19 @@ int c_count_digits(int i);
 
    Must be freed to prevent memory leaks.
 
-   @returns the integer array
    @param num the number to split into digits
    @param size the size of the number to split
+   @returns the integer array
 */
 int* c_split_digits(int num, int size);
+
+/**
+   Simple file opener helper. Provides error handling.
+
+   @param name the name of the file to open
+   @param mode the mode to open the file in
+   @returns pointer to the file
+*/
+FILE* c_fopen(char* name, char* mode);
 
 #endif
