@@ -97,7 +97,12 @@ char* test_math() {
     C_ASSERT("is_prime method not functioning correctly", is_prime(92831) == true);
     C_ASSERT("is_prime method not functioning correctly", is_prime(92832) == false);
     C_ASSERT("is_palindrome method not functioning correctly", is_palindrome(9009) == true);
+    C_ASSERT("is_palindrome method not functioning correctly", is_palindrome(146) == false);
     C_ASSERT("is_even method not functioning correctly", is_even(104) == true);
+    C_ASSERT("is_even method not functioning correctly", is_even(3) == false);
+    C_ASSERT("num_of_factors method not functioning correctly", num_of_factors(28) == 6);
+    printf("Factors: ");
+    print_factors(104);
 
     return 0;
 }

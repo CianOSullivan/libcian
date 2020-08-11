@@ -31,3 +31,21 @@ bool is_palindrome(int num) {
 bool is_even(int num) {
     return num % 2 == 0 ? true : false;
 }
+
+int num_of_factors(int num) {
+    int factors = 0;
+    for (int i = 1; i*i < num; i++) {
+        if (num % i == 0)
+            factors += 2;
+    }
+
+    return factors;
+}
+
+void print_factors(int num) {
+    for (int i = 1; i*i < num; i++) {
+        if (num % i == 0)
+            printf("%d ", i);
+    }
+    printf("\n");
+}
