@@ -38,13 +38,22 @@ bool is_even(int num);
 
    @returns the number of factors of num
    @param num the number to factorise
- */
+*/
 int num_of_factors(int num);
 
 /**
    Print the factors of the given number.
 
    @param num the number to factorise
- */
+*/
 void print_factors(int num);
+
+/**
+   Get the factorial of the given number.
+
+   @returns factorial of num
+   @param num the number to factorialise
+*/
+int factorial(unsigned int num);
+
 #endif

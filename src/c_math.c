@@ -49,3 +49,13 @@ void print_factors(int num) {
     }
     printf("\n");
 }
+
+int factorial(unsigned int num) {
+    int result = 1;
+
+    for (int i = num; i > 0; i--) {
+        result = result * i;
+    }
+
+    return result;
+}
