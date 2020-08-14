@@ -2,6 +2,7 @@
 #define C_BINTREE_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 /**
    @file c_bintree.h
    @brief Binary tree data structure.
@@ -42,9 +43,12 @@ void c_bt_insert(c_bt* tree, int data);
 
    @param tree the root node of the tree
  */
-void print_preorder(c_bt_node * tree);
-void print_inorder(c_bt_node * tree);
-void print_postorder(c_bt_node * tree);
+void print_preorder(c_bt_node* tree);
+void print_inorder(c_bt_node* tree);
+void print_postorder(c_bt_node* tree);
+void c_bt_pretty_print(c_bt_node* tree, int level);
+bool c_bt_lookup(c_bt* tree, int data);
+
 
 int c_bt_size(c_bt* tree);
 

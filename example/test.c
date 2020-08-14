@@ -71,10 +71,23 @@ char* test_binarytree() {
     c_bt* tree = c_bt_init();
     c_bt_insert(tree, 5);
     c_bt_insert(tree, 8);
+    c_bt_insert(tree, 8);
+    c_bt_insert(tree, 3);
+    c_bt_insert(tree, 15);
+    c_bt_insert(tree, 11);
+
     c_bt_insert(tree, 10);
     c_bt_insert(tree, 2);
+
+    if (!c_bt_lookup(tree, 4)) {
+        printf("Works\n");
+    }
+
     printf("Size: %d\n", c_bt_size(tree));
     print_preorder(tree->root);
+
+    c_bt_pretty_print(tree->root, 0);
+
     return 0;
 }
 
