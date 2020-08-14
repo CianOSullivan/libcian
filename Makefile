@@ -25,7 +25,7 @@ move:
 
 # Compile the libcian source files and link them
 compile: move
-	gcc -g -Wall -Werror -fPIC -Iinclude/libcian -c src/*.c
+	gcc -g -Wall -Werror -Wpedantic -fPIC -Iinclude/libcian -c src/*.c
 	gcc -shared -o libcian.so.1.0 *.o
 	mv libcian.so.1.0 /usr/lib
 

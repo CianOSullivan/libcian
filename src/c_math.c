@@ -59,3 +59,19 @@ int factorial(unsigned int num) {
 
     return result;
 }
+
+long long c_pow(int num, int pow) {
+    long long total = num;
+    if (pow < 0) {
+        fprintf(stderr, "c_pow currently doesn't support negative powers\n");
+        exit(1);
+    }
+    if (pow == 0)
+        return 1;
+
+    while (pow != 1) {
+        total *= num;
+        pow--;
+    }
+    return total;
+}

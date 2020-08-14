@@ -102,6 +102,7 @@ char* test_math() {
     C_ASSERT("is_even method not functioning correctly", is_even(3) == false);
     C_ASSERT("num_of_factors method not functioning correctly", num_of_factors(28) == 6);
     C_ASSERT("factorial method not functioning correctly", factorial(12) == 479001600);
+    C_ASSERT("c_pow method not functioning correctly", c_pow(4, 8) == 65536);
 
     printf("Factors: ");
     print_factors(104);

@@ -56,4 +56,13 @@ void print_factors(int num);
 */
 int factorial(unsigned int num);
 
+/**
+   Really primitive exponent function. Can't handle negative numbers or really large results.
+
+   @returns the number raised to the power
+   @param num the number to apply the exponent todo
+   @param pow the exponent
+ */
+long long c_pow(int num, int pow);
+
 #endif
