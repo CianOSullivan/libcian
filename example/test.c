@@ -6,7 +6,6 @@
 #include <libcian/c_util.h>
 #include <libcian/c_math.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
 
 int tests_run = 0;
@@ -19,14 +18,21 @@ char* test_string() {
     int count = c_str_len(hello);
     C_ASSERT("String length != 12", count == 12);
 
+    // String comparison
+    C_ASSERT("Contains method incorrect", c_strcmp(hello, "Hello!") == -1);
+
     // String reversal
     c_reverse(hello);
     c_log_info("Reversed word"); // Example of logging usage
-    C_ASSERT("Reversed string incorrect", strcmp(hello, "!dlroW olleH") == 0);
+    C_ASSERT("Reversed string incorrect", c_strcmp(hello, "!dlroW olleH") == 0);
 
     // String contains
     char cool[] = "This is cool!";
-    C_ASSERT("Contains method incorrect", contains(cool, "cool!"));
+    C_ASSERT("Contains method incorrect", c_contains(cool, "cool!"));
+    C_ASSERT("Contains method incorrect", c_contains(cool, "not") == false);
+
+    // String count
+    C_ASSERT("Word count method incorrect", c_word_count("This contains four words.") == 4);
 
     return 0;
 }
