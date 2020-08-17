@@ -10,6 +10,18 @@
 
 int tests_run = 0;
 
+char* test_logging() {
+    printf("\n*** Testing Logging ***\n");
+
+    c_set_logger(1);    // Set logging level to INFO
+    c_log_info("Log info message");
+    c_set_logger(2);    // Set logging level to DEBUG
+    c_log_info("This info message won't run");
+    c_log_debug("Log debug message");
+
+    return 0;
+}
+
 char* test_string() {
     printf("\n*** Testing string ***\n");
     char hello[] = "Hello World!";
@@ -23,7 +35,6 @@ char* test_string() {
 
     // String reversal
     c_reverse(hello);
-    c_log_info("Reversed word"); // Example of logging usage
     C_ASSERT("Reversed string incorrect", c_strcmp(hello, "!dlroW olleH") == 0);
 
     // String contains
@@ -130,19 +141,18 @@ char* test_math() {
 }
 
 char* test_suite(void) {
+    C_RUN_TEST(test_logging);
     C_RUN_TEST(test_string);
     C_RUN_TEST(test_linkedlist);
     C_RUN_TEST(test_binarytree);
     C_RUN_TEST(test_util);
     C_RUN_TEST(test_math);
 
-
     return 0;
 }
 
 int main() {
     printf("\n*** STARTING UNIT TESTS ***\n");
-    c_set_logger(1);    // Set logging level to INFO
 
     char* result = test_suite();
 
