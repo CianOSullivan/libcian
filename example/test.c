@@ -7,6 +7,7 @@
 #include <libcian/c_math.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 int tests_run = 0;
 
@@ -33,6 +34,10 @@ char* test_string() {
     // String comparison
     C_ASSERT("Contains method incorrect", c_strcmp(hello, "Hello!") == -1);
 
+    // strstr
+    C_ASSERT("strstr string incorrect", c_strstr("apple", "lemon") == NULL);
+    C_ASSERT("strstr string incorrect", c_strstr("This-That", "-") != NULL);
+
     // String reversal
     c_reverse(hello);
     C_ASSERT("Reversed string incorrect", c_strcmp(hello, "!dlroW olleH") == 0);
@@ -41,6 +46,7 @@ char* test_string() {
     char cool[] = "This is cool!";
     C_ASSERT("Contains method incorrect", c_contains(cool, "cool!"));
     C_ASSERT("Contains method incorrect", c_contains(cool, "not") == false);
+
 
     // String count
     C_ASSERT("Word count method incorrect", c_word_count("This contains four words.") == 4);

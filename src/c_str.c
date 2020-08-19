@@ -1,6 +1,7 @@
 #include "c_str.h"
 #include <stdbool.h>  // true, false
 #include <stdlib.h>   // NULL
+#include <string.h>   // strdup
 
 int c_str_len(char *pointer) {
     int c = 0;
@@ -43,16 +44,25 @@ int c_strcmp(const char* s1, const char* s2) {
     return *s1 - *s2;
 }
 
-const char* c_strstr(const char* s1, const char* s2) {
-    // Iterate through s1 until end of string
-	while (*s1 != '\0') {
-		if ((*s1 == *s2) && (c_strcmp(s1, s2) == 0))
-			return s1;
-		s1++; // Progress through s1
-	}
+const char* c_strstr(const char *str, const char *substr) {
+    while (*str) {
+        char *Begin = strdup(str);
+        char *pattern = strdup(substr);
 
-	return NULL; // No match found
-}
+        // If first character of sub string match, check for whole string
+        while (*str && *pattern && *str == *pattern) {
+            str++;
+            pattern++;
+        }
+
+        // If complete sub string match, return starting address
+        if (!*pattern)
+            return Begin;
+
+        str = Begin + 1;	// Increment main string
+    }
+    return NULL;
+    }
 
 bool c_contains(const char s1[], const char s2[]) {
     // Check if s2 is in s1

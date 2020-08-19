@@ -38,7 +38,9 @@ int c_strcmp(const char* s1, const char* s2);
 
 /**
    Finds first occurence of a needle in a haystack.
-
+   Taken from:
+   http://www.firmcodes.com/write-c-code-to-implement-the-strstr-function-to-search-for-a-substring/
+   I'm sure I'll understand this someday ;)
    @returns pointer to the string that is the first byte of the substring or
    null pointer if no match was found
    @param s1 the haystack
