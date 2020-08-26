@@ -5,6 +5,7 @@
 #include <libcian/c_bintree.h>
 #include <libcian/c_util.h>
 #include <libcian/c_math.h>
+#include <libcian/c_quicksort.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
@@ -116,13 +117,19 @@ char* test_binarytree() {
 
 char* test_util() {
     printf("\n*** Testing Utilities ***\n");
+    int* split_digs = c_split_digits(9009, 4);
+    int arr1[] = {19, 2, 12, 4, 3, 15, 6, 1};
+    int arr2[] = {};
 
     C_ASSERT("Incorrect digit count: -1", c_count_digits(-1) == 1);
     C_ASSERT("Incorrect digit count: 0", c_count_digits(0) == 1);
     C_ASSERT("Incorrect digit count: 12345", c_count_digits(12345) == 5);
-    int* arr = c_split_digits(9009, 4);
-    C_ASSERT("Digit split not functioning correctly", arr[3] == 9);
-    free(arr); // Never forget to free array!!
+    C_ASSERT("Digit split not functioning correctly", split_digs[3] == 9);
+    C_ASSERT("C_ARR_SIZE did not return 8", C_ARR_SIZE(arr1) == 8);
+    C_ASSERT("C_ARR_SIZE did not return NULL", C_ARR_SIZE(arr2) == 0);
+
+    // Never forget to free pointer to c_split_digits!!
+    free(split_digs);
 
     return 0;
 }
@@ -146,6 +153,20 @@ char* test_math() {
     return 0;
 }
 
+char* test_quicksort() {
+    printf("\n*** Testing Quicksort ***\n");
+
+    int arr[] = {19, 2, 12, 4, 3, 15, 6, 1};
+
+    c_quicksort(arr, 0, C_ARR_SIZE(arr) - 1);
+    for (int i = 0; i < C_ARR_SIZE(arr); i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+
+
 char* test_suite(void) {
     C_RUN_TEST(test_logging);
     C_RUN_TEST(test_string);
@@ -153,6 +174,7 @@ char* test_suite(void) {
     C_RUN_TEST(test_binarytree);
     C_RUN_TEST(test_util);
     C_RUN_TEST(test_math);
+    C_RUN_TEST(test_quicksort);
 
     return 0;
 }
