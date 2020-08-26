@@ -10,6 +10,13 @@
 */
 
 /**
+   Get the number of elements in the given array. Type agnostic.
+
+   @returns the number of elements in the array
+*/
+#define C_ARR_SIZE(arr) (((arr) == NULL) ? 0 : (sizeof(arr) / sizeof(arr[0])))
+
+/**
    Count the number of digits in a number.
 
    @param i the number to count the digits of
